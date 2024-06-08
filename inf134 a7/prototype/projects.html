@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Jason Chabot">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">    <!-- you would also link to Bootstrap here! -->
+    <title>Players</title>
+    <style>
+      
+      .container {
+        display: flex;
+      }
+      .player-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 50%;
+      }
+      .player-list div {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+      .player-list div:hover {
+        background-color: #e9e9e9;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+      .player-list div:active {
+        background-color: #d9d9d9;
+      }
+      #playerInfo {
+        margin-left: 20px;
+        padding: 10px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        width: 50%;
+        display: none;
+        transition: opacity 0.5s;
+        opacity: 0;
+      }
+      #playerInfo.show {
+        display: block;
+        opacity: 1;
+      }
+    </style>
+</head>
+
+
+<header class="merriweather-bold">
+  <a href="./index.html">Servers</a>
+  <a href="./skills.html">Heatmap</a>
+  <a href="./projects.html">Players</a>
+</header>
+
+<body>
+
+  <h1 style="margin-left: 1%;">Players</h1>
+  <div class="container">
+    <div class="player-list" style="margin-left: 1%;">
+      <div onclick="showPlayerInfo('player1')">averagebeverage</div>
+      <div onclick="showPlayerInfo('player2')">Uncreative</div>
+      <div onclick="showPlayerInfo('player3')">buford1842</div>
+      <div onclick="showPlayerInfo('player4')">monikaFan</div>
+    </div>
+    <div id="playerInfo" style="margin-left: 1%;"></div>
+  </div>
+  
+  <script>
+    const playerDetails = {
+      player1: {
+        name: 'averagebeverage',
+        time: '15h26m',
+        favorite: 'Bread',
+        nemesis: 'N/A',
+        server: 'US EAST 1'
+      },
+      player2: {
+        name: 'Uncreative',
+        time: '23h1m',
+        favorite: 'Fishing Rod',
+        nemesis: 'buford1842',
+        server: 'US WEST 1'
+      },
+      player3: {
+        name: 'buford1842',
+        time: '10h13m',
+        favorite: 'Bow',
+        nemesis: 'N/A',
+        server: 'US WEST 1'
+      },
+      player4: {
+        name: 'monikaFan',
+        time: '12h13m',
+        favorite: 'Flint and Steel',
+        nemesis: 'Uncreative',
+        server: 'US WEST 1'
+      }
+    };
+  
+    function showPlayerInfo(playerId) {
+      const infoDiv = document.getElementById('playerInfo');
+      const player = playerDetails[playerId];
+  
+      infoDiv.innerHTML = `
+        <h2>${player.name}</h2>
+        <p><strong>Time Played:</strong> ${player.time}</p>
+        <p><strong>Favorite Item:</strong> ${player.favorite}</p>
+        <p><strong>Nemesis:</strong> ${player.nemesis}</p>
+        <p><strong>Favorite Server:</strong> ${player.server}</p>
+      `;
+      infoDiv.classList.add('show');
+    }
+  </script>
+  
+  </body>
+
+
+</html>
